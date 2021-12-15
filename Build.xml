@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="foodApp" default="full-build">
- <property name="basedir" value="."/>
- <!-- Use this when the tools are managed by Composer in ${basedir}/vendor/bin -->
- <property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
- <property name="phpcpd"  value="${basedir}/vendor/bin/phpcpd"/>
- <property name="phpcs"   value="${basedir}/vendor/bin/phpcs"/>
- <property name="phpdox"  value="${basedir}/vendor/bin/phpdox"/>
- <property name="phploc"  value="${basedir}/vendor/bin/phploc"/>
- <property name="phpmd"   value="${basedir}/vendor/bin/phpmd"/>
- <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/>
+ <!-- By default, we assume all tools to be on the $PATH -->
+ <property name="pdepend" value="/home/andrew/vendor/bin/pdepend"/>
+ <property name="phpcpd"  value="/home/andrew/vendor/bin/phpcpd"/>
+ <property name="phpcs"   value="/home/andrew/vendor/bin/phpcs"/>
+ <property name="phploc"  value="/home/andrew/vendor/bin/phploc"/>
+ <property name="phpmd"   value="/home/andrew/vendor/bin/phpmd"/>
+ <property name="phpunit" value="/home/andrew/vendor/bin/phpunit"/>
+
 
  <target name="full-build"
-         depends="prepare,static-analysis,phpunit-ci,phpdox,-check-failure"
+         depends="prepare,static-analysis,phpunit,-check-failure"
          description="Performs static analysis, runs the tests, and generates project documentation"/>
 
  <target name="full-build-parallel"
-         depends="prepare,static-analysis-parallel,phpunit-ci,phpdox,-check-failure"
+         depends="prepare,static-analysis-parallel,phpunit,-check-failure"
          description="Performs static analysis (executing the tools in parallel), runs the tests, and generates project documentation"/>
 
  <target name="quick-build"
-         depends="prepare,lint,phpunit"
+         depends="prepare,lint,phpunit-no-coverage"
          description="Performs a lint check and runs the tests (without generating code coverage reports)"/>
 
  <target name="static-analysis"
@@ -48,7 +47,6 @@
   <delete dir="${basedir}/build/coverage"/>
   <delete dir="${basedir}/build/logs"/>
   <delete dir="${basedir}/build/pdepend"/>
-  <delete dir="${basedir}/build/phpdox"/>
   <property name="clean.done" value="true"/>
  </target>
 
@@ -60,7 +58,6 @@
   <mkdir dir="${basedir}/build/coverage"/>
   <mkdir dir="${basedir}/build/logs"/>
   <mkdir dir="${basedir}/build/pdepend"/>
-  <mkdir dir="${basedir}/build/phpdox"/>
   <property name="prepare.done" value="true"/>
  </target>
 
@@ -72,11 +69,9 @@
 
    <fileset dir="${basedir}/src">
     <include name="**/*.php" />
+    <modified />
    </fileset>
 
-   <fileset dir="${basedir}/tests">
-    <include name="**/*.php" />
-   </fileset>
   </apply>
 
   <property name="lint.done" value="true"/>
@@ -88,6 +83,12 @@
   <exec executable="${phploc}" taskname="phploc">
    <arg value="--count-tests" />
    <arg path="${basedir}/src" />
+   <arg value="--exclude"/>
+   <arg path="${basedir}/src/libs" />
+   <arg value="--exclude"/>
+   <arg path="${basedir}/src/templates" />
+   <arg value="--exclude"/>
+   <arg path="${basedir}/src/Vendor" />
    <arg path="${basedir}/tests" />
   </exec>
 
@@ -104,8 +105,14 @@
    <arg path="${basedir}/build/logs/phploc.csv" />
    <arg value="--log-xml" />
    <arg path="${basedir}/build/logs/phploc.xml" />
+   <arg value="--exclude"/>
+   <arg path="${basedir}/src/libs" />
+   <arg value="--exclude"/>
+   <arg path="${basedir}/src/templates" />
+   <arg value="--exclude"/>
+   <arg path="${basedir}/src/Vendor" />
+
    <arg path="${basedir}/src" />
-   <arg path="${basedir}/tests" />
   </exec>
 
   <property name="phploc.done" value="true"/>
@@ -119,6 +126,7 @@
    <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
    <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
    <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+   <arg value="--ignore=${basedir}/src/libs,${basedir}/src/templates,${basedir}/src/Vendor"/>
    <arg path="${basedir}/src" />
   </exec>
 
@@ -130,8 +138,10 @@
          description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
   <exec executable="${phpmd}" taskname="phpmd">
    <arg path="${basedir}/src" />
+   <arg value="--exclude"/>
+   <arg path="${basedir}/src/libs,${basedir}/src/templates,${basedir}/src/Vendor" />
    <arg value="text" />
-   <arg path="${basedir}/build/phpmd.xml" />
+   <arg path="${basedir}/build.phpmd.xml" />
   </exec>
 
   <property name="phpmd.done" value="true"/>
@@ -144,7 +154,9 @@
   <exec executable="${phpmd}" taskname="phpmd">
    <arg path="${basedir}/src" />
    <arg value="xml" />
-   <arg path="${basedir}/build/phpmd.xml" />
+   <arg path="${basedir}/build.phpmd.xml" />
+   <arg value="--exclude"/>
+   <arg path="${basedir}/src/libs,${basedir}/src/templates,${basedir}/src/Vendor" />
    <arg value="--reportfile" />
    <arg path="${basedir}/build/logs/pmd.xml" />
   </exec>
@@ -158,7 +170,7 @@
   <exec executable="${phpcs}" taskname="phpcs">
    <arg value="--standard=PSR2" />
    <arg value="--extensions=php" />
-   <arg value="--ignore=autoload.php" />
+   <arg value="--ignore=${basedir}/src/libs,${basedir}/src/templates,${basedir}/src/Vendor"/>
    <arg path="${basedir}/src" />
    <arg path="${basedir}/tests" />
   </exec>
@@ -175,7 +187,7 @@
    <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
    <arg value="--standard=PSR2" />
    <arg value="--extensions=php" />
-   <arg value="--ignore=autoload.php" />
+   <arg value="--ignore=${basedir}/src/libs,${basedir}/src/templates,${basedir}/src/Vendor"/>
    <arg path="${basedir}/src" />
    <arg path="${basedir}/tests" />
   </exec>
@@ -187,7 +199,12 @@
          unless="phpcpd.done"
          description="Find duplicate code using PHPCPD and print human readable output. Intended for usage on the command line before committing.">
   <exec executable="${phpcpd}" taskname="phpcpd">
+   <arg value="--exclude=libs"/>
+   <arg value="--exclude=templates"/>
+   <arg value="--exclude=Vendor"/>
    <arg path="${basedir}/src" />
+
+
   </exec>
 
   <property name="phpcpd.done" value="true"/>
@@ -200,57 +217,48 @@
   <exec executable="${phpcpd}" taskname="phpcpd">
    <arg value="--log-pmd" />
    <arg path="${basedir}/build/logs/pmd-cpd.xml" />
+   <arg value="--exclude=libs"/>
+   <arg value="--exclude=templates"/>
+   <arg value="--exclude=Vendor"/>
    <arg path="${basedir}/src" />
   </exec>
 
   <property name="phpcpd.done" value="true"/>
  </target>
 
- <target name="phpunit-ci"
+ <target name="phpunit"
          unless="phpunit.done"
          depends="prepare"
          description="Run unit tests with PHPUnit">
-  <exec executable="${phpunit}" returnProperty="result.phpunit" taskname="phpunit">
+  <exec executable="${phpunit}" resultproperty="result.phpunit" taskname="phpunit">
    <arg value="--configuration"/>
-   <arg path="${basedir}/phpunit.xml.dist"/>
+   <arg path="${basedir}/build.phpunit.xml"/>
   </exec>
 
   <property name="phpunit.done" value="true"/>
  </target>
 
- <target name="phpunit"
+ <target name="phpunit-no-coverage"
          unless="phpunit.done"
          depends="prepare"
          description="Run unit tests with PHPUnit (without generating code coverage reports)">
-  <exec executable="${phpunit}" taskname="phpunit">
+  <exec executable="${phpunit}" failonerror="true" taskname="phpunit">
    <arg value="--configuration"/>
-   <arg path="${basedir}/phpunit.xml.dist"/>
+   <arg path="${basedir}/build.phpunit.xml"/>
    <arg value="--no-coverage"/>
   </exec>
 
   <property name="phpunit.done" value="true"/>
  </target>
 
- <target name="phpdox"
-         unless="phpdox.done"
-         depends="phploc-ci,phpcs-ci,phpmd-ci"
-         description="Generate project documentation using phpDox">
-  <exec executable="${phpdox}" taskname="phpdox">
-   <arg value="--file"/>
-   <arg path="${basedir}/build/phpdox.xml"/>
-  </exec>
-
-  <property name="phpdox.done" value="true"/>
- </target>
 
  <target name="-check-failure">
-   <if>
+  <fail message="PHPUnit did not finish successfully">
+   <condition>
     <not>
      <equals arg1="${result.phpunit}" arg2="0"/>
     </not>
-    <then>
-     <fail message="PHPUnit did not finish successfully"/>
-    </then>
-   </if>
+   </condition>
+  </fail>
  </target>
 </project>
