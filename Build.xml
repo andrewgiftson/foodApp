@@ -102,9 +102,9 @@
   <exec executable="${phploc}" taskname="phploc">
    <arg value="--count-tests" />
    <arg value="--log-csv" />
-   <arg path="${basedir}phploc.csv" />
+   <arg path="${basedir}/phploc.csv" />
    <arg value="--log-xml" />
-   <arg path="${basedir}phploc.xml" />
+   <arg path="${basedir}/phploc.xml" />
    <arg value="--exclude"/>
    <arg path="${basedir}" />
    <arg value="--exclude"/>
