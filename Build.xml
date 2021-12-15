@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="foodApp" default="full-build">
  <!-- By default, we assume all tools to be on the $PATH -->
- <property name="pdepend" value="/home/andrew/vendor/bin/pdepend"/>
- <property name="phpcpd"  value="/home/andrew/vendor/bin/phpcpd"/>
- <property name="phpcs"   value="/home/andrew/vendor/bin/phpcs"/>
- <property name="phploc"  value="/home/andrew/vendor/bin/phploc"/>
- <property name="phpmd"   value="/home/andrew/vendor/bin/phpmd"/>
- <property name="phpunit" value="/home/andrew/vendor/bin/phpunit"/>
+ <property name="pdepend" value="/home/andrew/workspace/Online food order"/>
+ <property name="phpcpd"  value="/home/andrew/workspace/Online food order"/>
+ <property name="phpcs"   value="/home/andrew/workspace/Online food order"/>
+ <property name="phploc"  value="/home/andrew/workspace/Online food order"/>
+ <property name="phpmd"   value="/home/andrew/workspace/Online food order"/>
+ <property name="phpunit" value="/home/andrew/workspace/Online food order"/>
 
 
  <target name="full-build"
