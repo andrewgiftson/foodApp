@@ -8,9 +8,9 @@ echo "> kill -9 $CURRENT_PID"
 kill -9 $CURRENT_PID
 sleep 10
 fi
- rm -rf /usr/share/tomcat9/armstrong.ant.teat /usr/share/tomcat9/armstrong.ant.teat.war
- echo nohup mv /home/andrew/workspace/Online food order/dist/*.war /usr/share/tomcat9/armstrong.ant.teat.war >> /root//home/andrew/workspace/Online food order/logs/springtestprojectSys.log &
-  mv /home/andrew/workspace/Online food order/dist/*.war /usr/share/tomcat9/armstrong.ant.teat.war
+ rm -rf /usr/share/tomcat9/armstrong /usr/share/tomcat9/armstrong.war
+ echo nohup mv /home/andrew/workspace/Online food order/dist/*.war /usr/share/tomcat9/armstrong.war >> /root//home/andrew/workspace/Online food order/logs/springtestprojectSys.log &
+  mv /home/andrew/workspace/Online food order/dist/*.war /usr/share/tomcat9/armstrong.war
  sleep 10
  cd /usr/share/tomcat9/bin
  ./startup.sh
