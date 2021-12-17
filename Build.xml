@@ -25,8 +25,8 @@
  
   <!-- Target for compiling the java code-->
  <target name="compile" depends="clean, makedir">
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
-                                                 <!--   ^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" > 
+                                                 <!--  includeantruntime="false"  -->
         <classpath>
             <path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
             <path id="junit" location="${lib.dir}/junit-4.9b2.jar"/>
@@ -36,8 +36,7 @@
  
   <!-- Target for createing the deployable jar file  -->
   <target name="war" depends="compile">
-    <war destfile="${dist.dir}\armstrong.ant.teat.war" 
-    	               webxml="WebRoot/WEB-INF/web.xml">
+    <war destfile="${dist.dir}\armstrong.ant.teat.war" webxml="WebRoot/WEB-INF/web.xml">
     	<classes dir="WebRoot/WEB-INF/classes"/>
     	<fileset dir="${dist.dir}"/>
     	<lib dir="${lib.dir}"/>
