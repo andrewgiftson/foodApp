@@ -38,9 +38,8 @@
  
   <!-- Target for createing the deployable jar file  -->
   <target name="war" depends="compile">
-    <war 
-	    destfile="${dist.dir}\armstrong.ant.teat.war" <!--webxml="WebRoot/WEB-INF/web.xml"-->> 
-	    needxmlfile="false"  
+    <war needxmlfile="false" destfile="${dist.dir}\armstrong.ant.teat.war" <!--webxml="WebRoot/WEB-INF/web.xml"-->> 
+	     
     	<classes dir="WebRoot/WEB-INF/classes"/>
     	<fileset dir="${dist.dir}"/>
     	<lib dir="${lib.dir}"/>
