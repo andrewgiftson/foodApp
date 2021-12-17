@@ -44,7 +44,7 @@
     	<fileset dir="${dist.dir}"/>
     	<lib dir="${lib.dir}"/>
       <manifest>
-        <attribute name="AntCreateWar" value="ant.Create.War" />
+        <attribute name="AntCreateWar" value="armstrong.War" />
       </manifest>
     </war>
   </target>
