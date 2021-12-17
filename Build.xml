@@ -20,12 +20,21 @@
     <mkdir dir="${lib.dir}" />
   	<mkdir dir="${dist.dir}" />
   </target>
+ 
+ 
+ 
+  <!-- Target for compiling the java code-->
+ <target name="compile" depends="clean, makedir">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="True"> 
+                                                 <!--  includeantruntime="false"  -->
+        <classpath>
+            <path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
+            <path id="junit" location="${lib.dir}/junit-4.9b2.jar"/>
+        </classpath>
+    </javac>
+</target>
 
-<!-- Target for compiling the java code-->
-  <target name="compile" depends="clean, makedir" includeantruntime="True">
-    <javac srcdir="${src.dir}" destdir="${classes.dir}">
-    </javac>	
-  </target>
+
  
   <!-- Target for createing the deployable jar file  -->
   <target name="war" depends="compile">
