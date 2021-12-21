@@ -8,8 +8,8 @@ echo "> kill -9 $CURRENT_PID"
 
 sleep 10
 fi
-chmod +rwx /usr/share/tomcat9
-rm -rf /usr/share/tomcat9/armstrong.ant.tear /usr/share/tomcat9/armstrong.ant.tear.war
+
+sudo rm -rf /usr/share/tomcat9/armstrong.ant.tear /usr/share/tomcat9/armstrong.ant.tear.war
 
  sudo mv /home/andrew/workspace/'Online food order'/dist/*.war /usr/share/tomcat9/armstrong.ant.tear.war
  sleep 10
