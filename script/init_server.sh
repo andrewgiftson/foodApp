@@ -8,10 +8,10 @@ echo "> kill -9 $CURRENT_PID"
 
 sleep 10
 fi
-chmod 0777
-sudo -s rm -rf //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear.war
-echo nohup mv /home/andrew/workspace/'Online food order'/dist/*.war /usr/share/tomcat9/armstrongant.ant.tear.war >> 
- sudo -s mv /home/andrew/workspace/'Online food order'/dist/*.war //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear.war
+SRC='/home/andrew/workspace/foodapp/dist/*.war'
+DST='//var/lib/tomcat9/webapps/ROOT/'
+
+su andrew sh -c "ln -f '$SRC' '$DST'" && rm -f "$SRC"
  sleep 10
  cd //usr/share/tomcat9/bin
  ./startup.sh

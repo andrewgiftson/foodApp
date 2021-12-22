@@ -6,5 +6,5 @@
                prefix="localhost_access_log" suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
 
-   <Context path="" docBase="Online food order"  reloadable="false" />
+   <Context path="" docBase="foodapp"  reloadable="false" />
 </Host>
