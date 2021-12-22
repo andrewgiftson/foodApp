@@ -8,7 +8,7 @@ echo "> kill -9 $CURRENT_PID"
 
 sleep 10
 fi
-SRC='/home/andrew/workspace/foodapp/dist/*.war'
+SRC='/home/andrew/workspace/foodapp/dist/armstrong.ant.tear.war'
 DST='//var/lib/tomcat9/webapps/ROOT/'
 
 su andrew sh -c "ln -f '$SRC' '$DST'" && rm -f "$SRC"
