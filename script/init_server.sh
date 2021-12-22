@@ -8,7 +8,7 @@ echo "> kill -9 $CURRENT_PID"
 
 sleep 10
 fi
-
+chmod 0777
 sudo -s rm -rf //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear.war
 echo nohup mv /home/andrew/workspace/'Online food order'/dist/*.war /usr/share/tomcat9/armstrongant.ant.tear.war >> 
  sudo -s mv /home/andrew/workspace/'Online food order'/dist/*.war //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear.war
