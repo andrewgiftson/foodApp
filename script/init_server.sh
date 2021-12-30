@@ -9,8 +9,7 @@ echo "> kill -9 $CURRENT_PID"
 sleep 10
 fi
 rm -rf //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear.war
-echo nohup mv /home/andrew/workspace/foodapp/dist/armstrong.ant.tear.war /usr/share/tomcat9/armstrong.ant.tear.war >> 
-mv /home/andrew/workspace/foodapp/dist/*.war  /var/lib/tomcat9/webapps/ROOT/
+mv /home/andrew/workspace/foodapp/dist/*.war  /var/lib/tomcat9/webapps/ROOT
  sleep 10
  cd //usr/share/tomcat9/bin
  ./startup.sh
