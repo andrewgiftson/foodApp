@@ -2,7 +2,7 @@
  <!-- Set the project name, basedir and default target to be executed-->
 <project name="foodApp" default="mainTarget" basedir=".">
   <!-- Sets the properties here-->
-  <property name="src.dir" location="/home/andrew/workspace/foodapp" />
+  <property name="src.dir" location="src" />
   <property name="classes.dir" location="WebRoot/WEB-INF/classes"/>
   <property name="lib.dir" location="WebRoot/WEB-INF/lib" />
   <property name="dist.dir" location="dist" />
