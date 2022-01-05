@@ -10,7 +10,7 @@ sleep 10
 fi
 rm -rf //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear //var/lib/tomcat9/webapps/ROOT/armstrong.ant.tear.war
 echo "File is removed"
-mv /home/andrew/workspace/foodapp/dist/*.war  /var/lib/tomcat9/webapps/ROOT
+mv /home/andrew/workspace/foodapp/dist/*.war  /var/lib/tomcat9/webapps
 echo "file is moved"
  sleep 10
  cd //usr/share/tomcat9/bin
