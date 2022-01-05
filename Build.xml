@@ -2,7 +2,7 @@
  <!-- Set the project name, basedir and default target to be executed-->
 <project name="foodApp" default="mainTarget" basedir=".">
   <!-- Sets the properties here-->
-  <property name="src.dir" location="src" />
+  <property name="src.dir" location="/home/andrew/workspace/foodapp" />
   <property name="classes.dir" location="WebRoot/WEB-INF/classes"/>
   <property name="lib.dir" location="WebRoot/WEB-INF/lib" />
   <property name="dist.dir" location="dist" />
@@ -20,7 +20,7 @@
     <mkdir dir="${lib.dir}" />
   	<mkdir dir="${dist.dir}" />
   </target>
- 
+  
  
  
   <!-- Target for compiling the java code-->
@@ -38,13 +38,13 @@
  
   <!-- Target for createing the deployable jar file  -->
   <target name="war" depends="compile">
-    <war needxmlfile="false" destfile="${dist.dir}\armstrong.ant.tear.war" ><!--webxml="WebRoot/WEB-INF/web.xml"-->
+    <war destfile="${dist.dir}\foodApp.war" webxml="WebRoot/WEB-INF/web.xml">
 	     
     	<classes dir="WebRoot/WEB-INF/classes"/>
     	<fileset dir="${dist.dir}"/>
     	<lib dir="${lib.dir}"/>
       <manifest>
-        <attribute name="AntCreateWar" value="armstrong.ant.tear.War" />
+        <attribute name="foodApp" value="foodApp.War" />
       </manifest>
     </war>
   </target>
