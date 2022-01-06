@@ -33,9 +33,6 @@
         </classpath>
     </javac>
 </target>
-
-
-<<<<<<< HEAD:Build.xml
  
   <!-- Target for createing the deployable jar file  -->
   <target name="war" depends="compile">
@@ -56,11 +53,4 @@
     <description>Main target</description>
   </target>
  
-=======
-<!-- target for start tomcat -->
-<target name="startTomcat">
-<exec executable="${tomcat9.bin}/startup.sh"/>
-</target>
-
->>>>>>> 914af11c81aee3dccbe0a78a5e0630f924234bb1:build.xml
 </project>
