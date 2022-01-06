@@ -12,7 +12,7 @@
 </war>
 <antcall target="deployTarget"/>
 
-<!-- Target for copy file -->
+<!-- Target for copy file from -->
 </target>
 <target name="deployTarget">
 <copy file="${base}/foodApp.war" todir="${tomcat9.deployment}"/>
