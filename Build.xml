@@ -25,6 +25,4 @@
 <exec executable="${tomcat9.bin}/startup.sh"/>
 </target>
 
-<target></target>
-
 </project>
