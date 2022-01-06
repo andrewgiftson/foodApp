@@ -1,4 +1,4 @@
-<project>
+<project name"foodApp">
 <property name="tomcat9" value="//var/lib/tomcat9"/>
 <property name="tomcat9.deployment" value="${tomcat9}/webapps"/>
 <property name="tomcat9.bin" value="//usr/share/tomcat9/bin"/>
