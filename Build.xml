@@ -5,22 +5,26 @@
 <property name="base" value="/home/andrew/workspace/foodapp"/>
 <property name="srcdir" value ="${base}/src"/>
 
+<!-- Target for creating war file -->
 <target name="warTarget">
 <war warfile="foodApp.war" needxmlfile="false">
 <fileset dir="${srcdir}"/>
 </war>
 <antcall target="deployTarget"/>
 
+<!-- Target for copy file -->
 </target>
 <target name="deployTarget">
 <copy file="${base}/foodApp.war" todir="${tomcat9.deployment}"/>
 <antcall target="stopTomcat"/>
 </target>
 
+<!-- Target for stop tomcat -->
 <target name="stopTomcat">
 <exec executable="${tomcat9.bin}/shutdown.sh"/>
 </target>
 
+<!-- target for start tomcat -->
 <target name="startTomcat">
 <exec executable="${tomcat9.bin}/startup.sh"/>
 </target>
