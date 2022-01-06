@@ -35,8 +35,8 @@
 </target>
  
   <!-- Target for createing the deployable jar file  -->
-  <target name="war" depends="compile">
-    <war destfile="${dist.dir}\foodApp.war"> 
+  <target name="war" depends="compile" >
+    <war destfile="${dist.dir}\foodApp.war" needxmlfile="false"> 
 	     
     	<classes dir="WebRoot/WEB-INF/classes"/>
     	<fileset dir="${dist.dir}"/>
