@@ -9,7 +9,7 @@ echo "> kill -9 $CURRENT_PID"
 sleep 10
 fi
 echo "/home/andrew/workspace/foodapp/src /var/www/html"
-cp /home/andrew/workspace/foodapp/src /var/www/html
+cp -r /home/andrew/workspace/foodapp/src /var/www/html
 
 
  echo "Execution complete."
