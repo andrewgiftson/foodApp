@@ -1,1 +1,20 @@
 https://github.com/andrewgiftson/foodApp.git
+
+
+
+
+
+MySQL
+sudo mysql --user=root mysql
+
+CREATE USER 'andrew'@'localhost' IDENTIFIED BY 'Pass@1234';
+GRANT ALL PRIVILEGES ON *.* TO 'andrew'@'localhost' WITH GRANT OPTION;
+EXIT;
+
+
+
+
+rm -rf //var/lib/tomcat9/webapps/foodApp //var/lib/tomcat9/webapps/foodApp.war
+
+
+echo "File is removed //var/lib/tomcat9/webapps/foodApp //var/lib/tomcat9/webapps/foodApp.war"
