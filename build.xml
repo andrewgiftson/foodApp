@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
  <!-- Set the project name, basedir and default target to be executed-->
 <project name="foodApp" basedir="."/>
 <property name="sql.url" value="http://localhost/phpmyadmin/index.php"/>
