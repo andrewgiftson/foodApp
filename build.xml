@@ -6,7 +6,7 @@
 <property name="sql.pass" value ="Pass@1234"/>
 
 <target name="Create DB">
-<sql url="sql.url" userid="${sql.user} password="${sql.pass}">
+<sql url="sql.url" userid="${sql.user}" password="${sql.pass}">
 <transacion src="dbfood.sql"/>
 </sql>
 </target>
