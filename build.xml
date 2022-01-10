@@ -3,10 +3,10 @@
 <project name="foodApp" basedir=".">
 <property name="sql.url" value="http://localhost/phpmyadmin/index.php"/>
 <property name="sql.user" value="andrew"/>
-<property name="Pass@1234"/>
+<property name="sql.pass" value ="Pass@1234"/>
 
 <target name="Create DB">
-<sql url="sql.url" userid="${sql.user}">
+<sql url="sql.url" userid="${sql.user} password="${sql.pass}">
 <transacion src="dbfood.sql"/>
 </sql>
 </target>
