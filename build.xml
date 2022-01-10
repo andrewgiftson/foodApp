@@ -1,6 +1,6 @@
 
  <!-- Set the project name, basedir and default target to be executed-->
-<project name="foodApp" basedir="."/>
+<project name="foodApp" basedir=".">
 <property name="sql.url" value="http://localhost/phpmyadmin/index.php"/>
 <property name="sql.user" value="andrew"/>
 <property name="Pass@1234"/>
